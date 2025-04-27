@@ -6,7 +6,6 @@ import { showToast } from '../ui/Toast' // adjust path as needed
 
 function AddCoins() {
     const [formData, setFormData] = useState({
-        memeCoinTitle: '',
         tickerTitle: '',
         description: '',
         x_link: '',
