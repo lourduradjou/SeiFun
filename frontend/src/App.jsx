@@ -24,12 +24,7 @@ function App() {
     return (
         <Provider store={store}>
             <SkeletonTheme baseColor="#a571d9" highlightColor="#f51cb27a">
-                <ErrorBoundary
-                    FallbackComponent={ErrorFallback}
-                    onReset={() => {
-                        window.location.reload()
-                    }}
-                >
+                <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => {}}>
                     <Suspense fallback={<Loader />}>
                         <Routes>
                             <Route element={<Layout />}>
