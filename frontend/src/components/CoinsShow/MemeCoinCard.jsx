@@ -19,7 +19,7 @@ export default function MemeCoinCard({
 }) {
     return (
         <div
-            className={`w-full mx-4 md:mx-0 md:max-w-[276px] relative bg-white dark:bg-[#111114] border-2 border-transparent rounded-md shadow-sm hover:-translate-y-2 transition-transform duration-300 
+            className={`w-full mx-4 md:mx-0 md:max-w-[276px] relative bg-[#111114] border-2 border-transparent rounded-md shadow-sm hover:-translate-y-2 transition-transform duration-300
              hover:shadow-[-4px_-1px_45px_0px_rgba(236,_72,_153,_0.7)]`}
         >
             <div className="flex flex-row sm:flex-col h-full">
@@ -43,12 +43,14 @@ export default function MemeCoinCard({
                     <img
                         className="h-full sm:h-48 w-full object-cover rounded-l-lg sm:rounded-t-lg sm:rounded-l-none"
                         src={imageUrl}
-                        alt="Sei Coins"
+                        alt={`${tokenName} Coin token logo`}
+                        loading="lazy"
+                        onError={(e) => (e.target.src = 'default-image.jpg')}
                     />
                 </Link>
 
                 <div className="p-3 w-2/3 sm:w-full">
-                    <h5 className="my-2 text-sm font-bold tracking-tight text-gray-900 dark:text-slate-100 font-palanquin">
+                    <h5 className="my-2 text-sm font-bold tracking-tight text-slate-100 font-palanquin">
                         Created by -{' '}
                         <span className="text-sky-500">{`${creator.slice(0, 5)}...${creator.slice(-4)}`}</span>
                     </h5>
@@ -62,29 +64,29 @@ export default function MemeCoinCard({
                         </p>
                     </div>
 
-                    <p className="mb-2 text-sm text-gray-700 dark:text-gray-400 font-montserrat">
+                    <p className="mb-2 text-sm text-gray-400 font-montserrat">
                         {description.length > 20 ? description.slice(0, 30) + '...' : description}
                     </p>
 
                     <div className="flex justify-start sm:justify-around gap-4 mt-2">
                         {x_link && (
                             <a href={x_link} target="_blank" rel="noopener noreferrer">
-                                <RiTwitterXLine className="text-xl text-gray-700 dark:text-white hover:text-sky-500" />
+                                <RiTwitterXLine className="text-xl text-white hover:text-sky-500" />
                             </a>
                         )}
                         {tele_link && (
                             <a href={tele_link} target="_blank" rel="noopener noreferrer">
-                                <FaTelegramPlane className="text-xl text-gray-700 dark:text-white hover:text-sky-500" />
+                                <FaTelegramPlane className="text-xl text-white hover:text-sky-500" />
                             </a>
                         )}
                         {website_link && (
                             <a href={website_link} target="_blank" rel="noopener noreferrer">
-                                <HiOutlineLink className="text-xl text-gray-700 dark:text-white hover:text-sky-500" />
+                                <HiOutlineLink className="text-xl text-white hover:text-sky-500" />
                             </a>
                         )}
                     </div>
 
-                    <h5 className="my-2 text-sm font-bold tracking-tight text-gray-900 dark:text-slate-100 font-palanquin">
+                    <h5 className="my-2 text-sm font-bold tracking-tight text-slate-100 font-palanquin">
                         Created on -{' '}
                         <span className="text-pink-500">
                             {new Date(createdAt).toLocaleString('en-IN', {

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Loader from '../ui/Loader'
 
 const CoinTransactionTable = () => {
     const [transactions, setTransactions] = useState([])
-    const [loading, setLoading] = useState(true)
 
     const formatCompactNumber = (num) => {
         if (num >= 1e9) return (num / 1e9).toFixed(1).replace(/\.0$/, '') + 'B'
@@ -121,37 +119,33 @@ const CoinTransactionTable = () => {
             },
         ]
         setTransactions(sampleData)
-        setLoading(false)
     }, [])
-
-    if (loading) return <Loader />
 
     return (
         <div className="max-w-[1200px] mx-auto p-4 min-h-screen  ">
-            <h2 className="text-2xl  tracking-wider text-center font-bold mb-2 text-gray-900 dark:text-white">
+            <h2 className="text-2xl  tracking-wider text-center font-bold mb-2 text-white">
                 Transaction History
             </h2>
             <p className="text-gray-500 text-sm text-center mb-6">
                 *Note: This table is under construction, data you may see will not be correct
             </p>
             <div className="overflow-x-auto rounded-md">
-                <table className="min-w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs uppercase bg-gray-100 dark:bg-darkGray text-gray-700 dark:text-gray-300">
+                <table className="min-w-full text-sm text-left text-gray-400">
+                    <thead className="text-xs uppercase  text-blue-600 bg-gray-800">
                         <tr>
-                            <th className="px-4 py-3">ID</th>
-                            <th className="px-4 py-3">User ID</th>
-
-                            <th className="px-4 py-3">Type</th>
-                            <th className="px-4 py-3">Quantity</th>
-                            <th className="px-4 py-3">Price</th>
-                            <th className="px-4 py-3">Timestamp</th>
+                            <th className="px-4 py-3 tracking-wider">ID</th>
+                            <th className="px-4 py-3 tracking-wider">User ID</th>
+                            <th className="px-4 py-3 tracking-wider">Type</th>
+                            <th className="px-4 py-3 tracking-wider">Quantity</th>
+                            <th className="px-4 py-3 tracking-wider">Price</th>
+                            <th className="px-4 py-3 tracking-wider">Timestamp</th>
                         </tr>
                     </thead>
                     <tbody>
                         {transactions.map((txn) => (
                             <tr
                                 key={txn.id}
-                                className="bg-white dark:bg-darkGray border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+                                className="bg-darkGray border-b border-gray-200 hover:bg-gray-800 transition"
                             >
                                 <td className="px-4 py-2">{txn.id}</td>
                                 <td className="px-4 py-2">{txn.userId}</td>
@@ -166,8 +160,9 @@ const CoinTransactionTable = () => {
                                 </td>
 
                                 <td className="px-4 py-2">{txn.quantity}</td>
-                                <td className="px-4 py-2 tracking-wider">
-                                    ₹{formatCompactNumber(txn.price)}
+                                <td className="px-4 py-2 tracking-wider flex gap-1">
+                                    <span>$</span>
+                                    {formatCompactNumber(txn.price)}
                                 </td>
 
                                 <td className="px-4 py-2">

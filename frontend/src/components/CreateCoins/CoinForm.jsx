@@ -60,7 +60,7 @@ function CoinForm({ formData, setFormData, handleSubmit }) {
                     value={formData.memeCoinTitle}
                     onChange={handleChange}
                     required
-                    className="py-2.5 pl-2 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 dark:text-white dark:border-gray-600  focus:outline-none"
+                    className="py-2.5 pl-2 w-full text-md bg-transparent border-0 border-b-2 text-white border-gray-600  focus:outline-none"
                 />
                 <div className="text-right absolute right-2 -top-2">
                     <button
@@ -86,7 +86,7 @@ function CoinForm({ formData, setFormData, handleSubmit }) {
                     placeholder="Ticker Title"
                     value={formData.tickerTitle}
                     onChange={handleChange}
-                    className="py-2.5 pl-2 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 dark:text-white dark:border-gray-600  focus:outline-none"
+                    className="py-2.5 pl-2 w-full text-md bg-transparent border-0 border-b-2 text-white border-gray-600  focus:outline-none"
                     required
                 />
                 <button type="button" onClick={tickerGenerate} title="Regenerate Ticker">
@@ -105,7 +105,7 @@ function CoinForm({ formData, setFormData, handleSubmit }) {
                     value={formData.description}
                     onChange={handleChange}
                     rows={3} // Adjust number of visible lines here
-                    className=" w-full pl-2 text-md text-gray-900 bg-transparent border-0 border-b-2 dark:text-white dark:border-gray-600  focus:outline-none resize-none"
+                    className=" w-full pl-2 text-md  bg-transparent border-0 border-b-2 text-white border-gray-600  focus:outline-none resize-none"
                 />
 
                 <button type="button" onClick={descriptionGenerate} title="Regenerate Description">
@@ -136,7 +136,7 @@ function CoinForm({ formData, setFormData, handleSubmit }) {
                                 placeholder={`${link.split('_')[0].charAt(0).toUpperCase() + link.split('_')[0].slice(1)} Link (optional)`}
                                 value={formData[link]}
                                 onChange={handleChange}
-                                className="py-2.5 w-full text-md text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 px-2 focus:outline-none"
+                                className="py-2.5 w-full text-md bg-transparent border-0 border-b-2 appearance-none text-white border-gray-600 px-2 focus:outline-none"
                             />
                         </div>
                     ))}
@@ -147,9 +147,9 @@ function CoinForm({ formData, setFormData, handleSubmit }) {
                 <input
                     type="file"
                     name="image"
-                    className="w-full text-slate-500 font-medium text-base bg-gray-100 
-                   cursor-pointer border border-gray-300 rounded-lg 
-                   file:cursor-pointer file:border-0 file:py-2.5 file:px-4 
+                    className="w-full text-slate-500 font-medium text-base bg-gray-100
+                   cursor-pointer border border-gray-300 rounded-lg
+                   file:cursor-pointer file:border-0 file:py-2.5 file:px-4
                    file:mr-4 file:bg-gray-800 file:hover:bg-gray-700 file:text-white"
                 />
             </div>

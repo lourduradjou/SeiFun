@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { FaBitcoin, FaWallet, FaUserCircle } from 'react-icons/fa'
+import {  FaWallet, FaUserCircle } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
 import Search from './Search'
 import GlowButton from './GlowButton'
 import WalletModal from '../modal/WalletModal'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { VscChromeClose } from 'react-icons/vsc'
-import logo from '@/assets/images/logo.png'
+
+import { MdOutlineFeedback } from 'react-icons/md'
+import { WalletIcon } from '@web3icons/react'
+
 import { useSelector, useDispatch } from 'react-redux'
 import { setAddress, setBalance } from '@/redux/features/wallet/walletSlice'
+
+import { TokenIcon } from '@web3icons/react'
+
+import { ExchangeIcon } from '@web3icons/react'
 
 export default function Navbar() {
     const [showModal, setShowModal] = useState(false)
@@ -42,14 +49,14 @@ export default function Navbar() {
     }
 
     return (
-        <nav className="py-7 px-10 md:px-14 border-b-2 border-b-blue-600 border-opacity-30 mb-6 md:mb-12">
+        <nav className="py-7 px-10 md:px-14 border-b-2 border-b-gray-600 border-opacity-40 mb-6 md:mb-4">
             <div className="flex justify-between items-center h-full text-white">
                 {/* Logo */}
                 <div className="flex justify-center items-center">
-                    <img className="w-6 md:w-12 h-auto mr-2" src={logo} alt="logo" />
-                    <h1 className="text-xl md:text-3xl font-bold tracking-wider">
+                    <img className="w-6 md:w-12 h-auto mr-2" src='./logo.webp' alt="logo" />
+                    <h1 className="text-xl md:text-3xl font-bold tracking-widest">
                         <Link to="/">
-                            SEI<span className="text-sky-500">.FUN</span>
+                            SEIFUN<span className="text-sky-500 text-lg">.xyz</span>
                         </Link>
                     </h1>
                 </div>
@@ -66,13 +73,13 @@ export default function Navbar() {
                     <ul className="flex justify-center items-center gap-8 text-md mx-8">
                         <li className="animate-pulse border-2 border-pink-400  px-2 py-1 xl:px-4 xl:py-3 rounded-xl flex justify-center items-center">
                             <Link to="/addCoins">
-                                <div className="flex items-center justify-center text-center">
+                                <div className="flex text-center ">
                                     Create Coin
                                     <span className="relative flex size-3">
-                                        <span className="absolute -top-6 left-10 inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                                        <span className="relative -top-6 left-10 inline-flex size-3 rounded-full bg-sky-500"></span>
+                                        <span className="absolute -top-4 left-11 inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                        <span className="relative -top-4 left-11 inline-flex size-3 rounded-full bg-sky-500"></span>
                                     </span>
-                                    <FaBitcoin className="hidden xl:inline-block ml-1" size={18} />
+                                    <TokenIcon symbol="sei" variant="mono" size="24" color="#FFFFFF" />
                                 </div>
                             </Link>
                         </li>
@@ -115,9 +122,9 @@ export default function Navbar() {
 
             {/* Slide-in Mobile Menu */}
             <div
-                className={`fixed top-0 right-0 h-full bg-[#1f1f1f] text-white z-50 transform transition-transform duration-300 ease-in-out ${
+                className={`fixed top-0 right-0 h-full bg-[#111114] text-white z-50 transform transition-transform duration-300 ease-in-out ${
                     isOpen ? 'translate-x-0' : 'translate-x-full'
-                } w-[70%] md:hidden shadow-lg pt-10 px-6`}
+                } w-[70%] md:hidden pt-10 px-6`}
             >
                 {/* Close Button inside the menu */}
                 <div className="absolute top-6 right-6 cursor-pointer">
@@ -129,9 +136,10 @@ export default function Navbar() {
                         <Link
                             to="/addCoins"
                             onClick={() => setIsOpen(false)}
-                            className="flex items-center justify-around"
+                            className="flex items-center gap-4"
                         >
-                            <FaBitcoin /> Create Coin
+                            <TokenIcon symbol="sei" variant="mono" size="24" color="#FFFFFF" />
+                            Create Coin
                         </Link>
                     </li>
                     <li>
@@ -141,7 +149,7 @@ export default function Navbar() {
                                     setShowModal(true)
                                     setIsOpen(false)
                                 }}
-                                className="flex items-center gap-2"
+                                className="flex items-center gap-4"
                             >
                                 <FaUserCircle />
                                 {address.slice(0, 5)}...{address.slice(-4)}
@@ -150,9 +158,15 @@ export default function Navbar() {
                             <Link
                                 to="/wallet"
                                 onClick={() => setIsOpen(false)}
-                                className="flex items-center gap-2"
+                                className="flex items-center gap-4"
                             >
-                                <FaWallet /> Connect Wallet
+                                <WalletIcon
+                                    id="sequence"
+                                    variant="mono"
+                                    size="24"
+                                    color="#FFFFFF"
+                                />{' '}
+                                Connect Wallet
                             </Link>
                         )}
                     </li>
@@ -160,9 +174,10 @@ export default function Navbar() {
                         <Link
                             to="/userTransactions"
                             onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-2"
+                            className="flex items-center gap-4"
                         >
-                            💸 Transactions
+                            <ExchangeIcon id="gemini" variant="mono" size="24" color="#FFFFFF" />{' '}
+                            Transactions
                         </Link>
                     </li>
                     <li>
@@ -171,9 +186,9 @@ export default function Navbar() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-2"
+                            className="flex items-center gap-4"
                         >
-                            📝 Feedback
+                            <MdOutlineFeedback /> Feedback
                         </a>
                     </li>
                 </ul>

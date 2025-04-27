@@ -5,7 +5,7 @@ import { MdOutlineLogout } from 'react-icons/md'
 export default function WalletModal({ address, balance, onClose, onCopy, onLogout }) {
     console.log(balance)
     return (
-        <div className="absolute right-0 mt-4 w-80 bg-darkGray text-slate-200 p-5 rounded-md z-50">
+        <div className="absolute right-0 mt-4 w-80 bg-gray-700 text-slate-200 p-5 rounded-md z-50">
             <button
                 className="absolute top-2 right-3 text-2xl text-gray-400 hover:text-red-600 "
                 onClick={onClose}
