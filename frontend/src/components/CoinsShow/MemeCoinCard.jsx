@@ -4,13 +4,6 @@ import { HiOutlineLink } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import { RiTwitterXLine } from 'react-icons/ri'
 
-import { Cloudinary } from '@cloudinary/url-gen'
-import { auto } from '@cloudinary/url-gen/actions/resize'
-import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity'
-
-// Initialize Cloudinary
-const cld = new Cloudinary({ cloud: { cloudName: 'dvtih3sd4' } })
-
 export default function MemeCoinCard({
     token,
     createdAt,
@@ -24,19 +17,6 @@ export default function MemeCoinCard({
     creator,
     marketplace,
 }) {
-    // Transform imageUrl using Cloudinary before rendering
-    let transformedImageUrl = imageUrl
-
-    if (imageUrl) {
-        const publicId = imageUrl.split('/').slice(-1)[0].split('.')[0]
-        transformedImageUrl = cld
-            .image(publicId)
-            .format('auto')
-            .quality('auto')
-            .resize(auto().gravity(autoGravity()).width(500).height(500))
-            .toURL()
-    }
-
     return (
         <div
             className={`w-full mx-4 md:mx-0 md:max-w-[276px] relative bg-[#111114] border-2 border-transparent rounded-md shadow-sm hover:-translate-y-2 transition-transform duration-300
@@ -62,7 +42,7 @@ export default function MemeCoinCard({
                 >
                     <img
                         className="h-full sm:h-48 w-full object-cover rounded-l-lg sm:rounded-t-lg sm:rounded-l-none"
-                        src={transformedImageUrl}
+                        src={imageUrl}
                         alt={`${tokenName} Coin token logo`}
                         loading="lazy"
                         onError={(e) => (e.target.src = 'default.webp')}

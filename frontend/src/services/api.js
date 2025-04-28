@@ -9,6 +9,8 @@ export const uploadImage = async (imageFile, setStatus) => {
 
         //setStatus('Sending image to the server...','info')
         const res = await axios.post(import.meta.env.VITE_CLOUDINARY_BASE_URL, formData)
+        console.log(res)
+        console.log(res.data)
 
         const url = res.data.secure_url
         console.log('Image uploaded:', url)
