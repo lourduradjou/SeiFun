@@ -15,8 +15,6 @@ import SkeletanCard from '../ui/SkeletanCard'
 import { ExchangeIcon, TokenIcon } from '@web3icons/react'
 import { MdOutlineFeedback } from 'react-icons/md'
 
-
-
 export default function MemeCoinLists() {
     const [memeCoins, setMemeCoins] = useState([])
     const [isFetching, setIsFetching] = useState(true)
@@ -112,6 +110,7 @@ export default function MemeCoinLists() {
           )
         : memeCoins
 
+    console.log(memeCoins)
     return (
         <div className="text-white md:max-w-[1200px] w-full mx-auto min-h-screen">
             <div className="sm:px-12 px-6 mx-auto xl:px-0 my-4 flex justify-between space-x-4 items-center border-b-2 border-gray-200 border-opacity-20 mb-2 md:mb-12">
