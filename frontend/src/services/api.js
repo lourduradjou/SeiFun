@@ -25,7 +25,7 @@ export const uploadImage = async (imageFile, setStatus) => {
 
 export const createCoinInDB = async (coinData, setStatus) => {
     try {
-        const res = await axios.post('http://localhost:5000/api/coin/createCoin', coinData)
+        const res = await axios.post(import.meta.env.VITE_BACKEND_URL, coinData)
         console.log('Coin created:', res.data)
         setStatus('Coin created successfully!', 'success')
     } catch (error) {
