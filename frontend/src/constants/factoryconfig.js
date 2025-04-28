@@ -1,7 +1,8 @@
 import { ethers } from 'ethers'
 import factoryABI from './factory.json'
 
-const factoryAddress = import.meta.env.VITE_FACTORY_RPC
+const factoryAddress = import.meta.env.VITE_FACTORY_ADDRESS
+const RPC_URL = import.meta.env.VITE_RPC_URL
 
 // For write transactions using MetaMask
 export async function getFactoryContractWithSigner() {
@@ -24,8 +25,7 @@ export async function getFactoryContractWithSigner() {
 
 // For read-only contract interaction
 export function getFactoryContractReadOnly() {
-    // https://sei-testnet.g.alchemy.com/v2/zVPRcN1J_zwwlgFCKO7RJ8UJ2bX7i3a4 - lourdu api
-    const rpcUrl = 'https://sei-testnet.g.alchemy.com/v2/jlixJi3oQon9gAvhRrr9vuFuhzu8PVIh'
+    const rpcUrl = RPC_URL
     const provider = new ethers.providers.JsonRpcProvider(rpcUrl)
 
     return new ethers.Contract(factoryAddress, factoryABI, provider)

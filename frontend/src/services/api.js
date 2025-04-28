@@ -4,7 +4,7 @@ export const uploadImage = async (imageFile, setStatus) => {
     try {
         const formData = new FormData()
         formData.append('file', imageFile)
-        formData.append('upload_preset', 'Sei-coin-images')
+        formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET)
         formData.append('cloud_name', import.meta.env.VITE_CLOUDINARY_CLOUD_NAME)
 
         //setStatus('Sending image to the server...','info')
