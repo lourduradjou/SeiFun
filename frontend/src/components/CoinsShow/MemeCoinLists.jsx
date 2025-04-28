@@ -14,6 +14,7 @@ import { BiLogoTelegram } from 'react-icons/bi'
 import SkeletanCard from '../ui/SkeletanCard'
 import { ExchangeIcon, TokenIcon } from '@web3icons/react'
 import { MdOutlineFeedback } from 'react-icons/md'
+import { showToast } from '../ui/Toast'
 
 export default function MemeCoinLists() {
     const [memeCoins, setMemeCoins] = useState([])
@@ -26,8 +27,9 @@ export default function MemeCoinLists() {
                 `${import.meta.env.VITE_BACKEND_URL}api/coin/getCoins`
             )
             return backendRes.data // Returns the coins from MongoDB
-        } catch (err) {
-            console.error('Error fetching coins from backend:', err)
+        } catch (error) {
+            showToast(`Error fetching coins from backend: ${error.message}`, 'error')
+            ///console.error('Error fetching coins from backend:', err)
             return []
         }
     }
@@ -35,7 +37,7 @@ export default function MemeCoinLists() {
         const data = await fetchAllProjects()
 
         // Debug: Log raw contract data
-        console.log('Fetched projects from contract:', data)
+        //console.log('Fetched projects from contract:', data)
 
         // Format the raw on-chain project data (if needed)
         const formatted = data.map((coin) => ({
@@ -110,7 +112,7 @@ export default function MemeCoinLists() {
           )
         : memeCoins
 
-    console.log(memeCoins)
+    //console.log(memeCoins)
     return (
         <div className="text-white md:max-w-[1200px] w-full mx-auto min-h-screen">
             <div className="sm:px-12 px-6 mx-auto xl:px-0 my-4 flex justify-between space-x-4 items-center border-b-2 border-gray-200 border-opacity-20 mb-2 md:mb-12">

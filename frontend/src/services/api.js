@@ -9,15 +9,15 @@ export const uploadImage = async (imageFile, setStatus) => {
 
         //setStatus('Sending image to the server...','info')
         const res = await axios.post(import.meta.env.VITE_CLOUDINARY_BASE_URL, formData)
-        console.log(res)
-        console.log(res.data)
+        // console.log(res)
+        // console.log(res.data)
 
         const url = res.data.secure_url
-        console.log('Image uploaded:', url)
+        // console.log('Image uploaded:', url)
         //setStatus('Image uploaded successfully','success')
         return url
     } catch (error) {
-        console.error('Image upload failed:', error)
+        // console.error('Image upload failed:', error)
         setStatus(`Image upload failed: ${error.message}`, 'error')
         return ''
     }
@@ -25,8 +25,11 @@ export const uploadImage = async (imageFile, setStatus) => {
 
 export const createCoinInDB = async (coinData, setStatus) => {
     try {
-        const res = await axios.post(import.meta.env.VITE_BACKEND_URL, coinData)
-        console.log('Coin created:', res.data)
+        await axios.post(
+            `${import.meta.env.VITE_BACKEND_URL}api/coin/createCoin`,
+            coinData
+        )
+        // console.log('Coin created:', res.data)
         setStatus('Coin created successfully!', 'success')
     } catch (error) {
         console.error('Coin creation failed:', error)

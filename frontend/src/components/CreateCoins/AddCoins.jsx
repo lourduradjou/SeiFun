@@ -71,7 +71,7 @@ function AddCoins() {
                 return null
             }
         } catch (error) {
-            console.error('Transaction error:', error)
+            //console.error('Transaction error:', error)
             showToast(`❌ Transaction failed: ${error.message}`, 'error')
             return null
         }

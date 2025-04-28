@@ -29,9 +29,9 @@ const CryptoTradePanel = ({ coinData }) => {
 
             await tx.wait()
             showToast(`✅ Bought ${amount} ${coinData?.ticker}`, 'success')
-        } catch (err) {
-            console.error(err)
-            showToast('Buy Failed', 'error')
+        } catch (error) {
+            //console.error(err)
+            showToast(`Buy Failed: ${error.message || error}`, 'error')
         }
     }
 

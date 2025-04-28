@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
 import marketplaceAbi from '../../constants/marketplace.json'
 import { FaRegCopy } from 'react-icons/fa'
+import { showToast } from '../ui/Toast'
 
 const formatAddress = (addr) => {
     if (!addr) return ''
@@ -37,8 +38,9 @@ export default function TradeButtonCombo({ handleBuy, handleSell, setAmount, amo
                 const parsedAmount = ethers.utils.parseUnits(amount, 18)
                 const price = await contract.calculatePrice(parsedAmount)
                 setCalculatedPrice(ethers.utils.formatEther(price))
-            } catch (err) {
-                console.error('Price fetch error:', err)
+            } catch (error) {
+                //console.error('Price fetch error:', err)
+                showToast(`Price fetch error: ${error.message || error}`, 'error');
                 setCalculatedPrice(null)
             }
         }

@@ -1,5 +1,6 @@
 import { ethers } from 'ethers'
 import factoryABI from './factory.json'
+import { showToast } from '@/components/ui/Toast'
 
 const factoryAddress = import.meta.env.VITE_FACTORY_ADDRESS
 const RPC_URL = import.meta.env.VITE_RPC_URL
@@ -17,9 +18,9 @@ export async function getFactoryContractWithSigner() {
         const signer = provider.getSigner()
 
         return new ethers.Contract(factoryAddress, factoryABI, signer)
-    } catch (err) {
-        console.error('Error connecting to wallet or contract:', err)
-        throw err
+    } catch (error) {
+        showToast(`Error connecting to wallet or contract: ${error.message}`, 'error')
+        //console.error('Error connecting to wallet or contract:', err)
     }
 }
 

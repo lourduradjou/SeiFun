@@ -3,7 +3,7 @@ import { MdContentCopy } from 'react-icons/md'
 import { MdOutlineLogout } from 'react-icons/md'
 
 export default function WalletModal({ address, balance, onClose, onCopy, onLogout }) {
-    console.log(balance)
+    //console.log(balance)
     return (
         <div className="absolute right-0 mt-4 w-80 bg-gray-700 text-slate-200 p-5 rounded-md z-50">
             <button

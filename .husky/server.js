@@ -39,7 +39,7 @@ app.post('/createCoin', async (req, res) => {
         await newCoin.save()
         res.status(201).json({ message: 'Coin created successfully', coin: newCoin })
     } catch (error) {
-        console.error('Error creating coin:', error)
+        //console.error('Error creating coin:', error)
         res.status(500).json({ message: 'Internal server error' })
     }
 })
@@ -49,7 +49,7 @@ app.get('/getCoins', async (req, res) => {
         const coins = await CoinModel.find()
         res.status(200).json(coins)
     } catch (error) {
-        console.error('Error fetching coins:', error)
+        //console.error('Error fetching coins:', error)
         res.status(500).json({ message: 'Internal server error' })
     }
 })
@@ -59,5 +59,5 @@ app.get('/getCoins', async (req, res) => {
 
 app.listen(5000, async () => {
     await connectDatabase()
-    console.log('Server started on port 5000')
+    //console.log('Server started on port 5000')
 })

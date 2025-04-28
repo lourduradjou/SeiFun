@@ -10,6 +10,7 @@ import {
 import { seiTestnet } from 'wagmi/chains'
 import { injected } from 'wagmi/connectors'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { showToast } from '@/components/ui/Toast'
 
 const queryClient = new QueryClient()
 export const config = createConfig({
@@ -48,7 +49,7 @@ export function useWalletLogic() {
                 const connectedBalance = balance
                 return { address: connectedAddress, balance: connectedBalance } // Return the address and balance
             } catch (error) {
-                console.error('Error connecting wallet:', error)
+                showToast(`Error connecting wallet: ${error.message}`, 'error')
                 throw error // Propagate the error
             }
         } else {
@@ -107,7 +108,7 @@ function EthSend() {
 function MyAddress() {
     const { address } = useAccount()
     const balance = useBalance({ address })
-    console.log(balance)
+    //console.log(balance)
     return (
         <div>
             {address}

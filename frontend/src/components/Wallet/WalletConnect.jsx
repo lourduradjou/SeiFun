@@ -51,6 +51,7 @@ function CustomWalletCard() {
             localStorage.setItem('walletaddress', address) // Store the address in local storage
             localStorage.setItem('walletBalance', balance) // Store the balance in local storage
         } catch (error) {
+            
             console.error('Error connecting wallet:', error)
         }
     }

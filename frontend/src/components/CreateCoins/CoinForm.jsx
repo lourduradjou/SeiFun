@@ -23,7 +23,7 @@ function CoinForm({ formData, setFormData, handleSubmit }) {
                 formData.memeCoinTitle +
                 'and return that three letter back.',
         })
-        console.log(response.text)
+        //console.log(response.text)
         setFormData((prev) => ({ ...prev, ['tickerTitle']: response.text }))
         setLoadingTicker(false)
     }
@@ -38,7 +38,7 @@ function CoinForm({ formData, setFormData, handleSubmit }) {
                 ' do not add bold type words always use normal words',
         })
         setFormData((prev) => ({ ...prev, ['description']: response.text }))
-        console.log(response.text)
+        //console.log(response.text)
         setLoadingDescription(false)
     }
 
