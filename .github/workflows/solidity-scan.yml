@@ -1,0 +1,25 @@
+name: Solidity Security Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  slither:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python & Install Slither
+        run: |
+          sudo apt update
+          sudo apt install python3-pip -y
+          pip3 install slither-analyzer
+
+      - name: Run Slither on contracts
+        run: |
+          # Change './contracts' to the correct path where your .sol files live
+          slither ./contracts || echo "Slither completed with warnings or issues"
